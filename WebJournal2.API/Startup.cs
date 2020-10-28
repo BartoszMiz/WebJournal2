@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Text;
 using System;
+using WebJournal2.API.Services;
 
 namespace WebJournal2.API
 {
@@ -38,6 +39,7 @@ namespace WebJournal2.API
 						ClockSkew = TimeSpan.Zero
 					};
 				});
+			services.AddSingleton<JwtGenerator>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,10 +57,7 @@ namespace WebJournal2.API
 			app.UseAuthentication();
 			app.UseAuthorization();
 
-			app.UseEndpoints(endpoints =>
-			{
-				endpoints.MapControllers();
-			});
+			app.UseEndpoints(endpoints => endpoints.MapControllers());
 		}
 	}
 }

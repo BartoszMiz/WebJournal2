@@ -7,7 +7,6 @@ using Microsoft.Extensions.Logging;
 
 namespace WebJournal2.API.Controllers
 {
-
 	[ApiController]
 	[Route("api/[controller]")]
 	public class WeatherForecastController : ControllerBase
@@ -16,13 +15,6 @@ namespace WebJournal2.API.Controllers
 		{
 			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 		};
-
-		private readonly ILogger<WeatherForecastController> logger;
-
-		public WeatherForecastController(ILogger<WeatherForecastController> logger)
-		{
-			this.logger = logger;
-		}
 
 		[Authorize]
 		[HttpGet]
