@@ -1,31 +1,31 @@
-﻿using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using WebJournal2.API.Models;
 using WebJournal2.API.Services;
 
 namespace WebJournal2.API.Controllers
 {
-	[Microsoft.AspNetCore.Mvc.Route("api/[controller]")]
+	[Route("api/[controller]")]
 	[ApiController]
 	public class LoginController : ControllerBase
 	{
-		private readonly JwtGenerator jwt;
+		private readonly JwtService jwt;
+		private readonly AuthenticationService auth;
 
-		public LoginController(JwtGenerator jwt)
+		public LoginController(JwtService jwt, AuthenticationService auth)
 		{
 			this.jwt = jwt;
+			this.auth = auth;
 		}
 
 		[HttpPost]
 		public IActionResult Login([FromBody]UserCredentials userCredentials)
 		{
-			if (userCredentials.Username == "test" && userCredentials.Password == "test")
-			{
-				string token = jwt.GenerateJSONWebToken();
-				return Ok(new { token });
-			}
-			else
+			JournalUser user = auth.Authenticate(userCredentials);
+			if (user == null)
 				return Unauthorized();
+
+			string token = jwt.GenerateJSONWebToken();
+			return Ok(new { token , user});
 		}
 	}
 }
