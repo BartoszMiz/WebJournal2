@@ -9,7 +9,7 @@ namespace WebJournal2.API.Controllers
 		[HttpGet("{message}")]
 		public IActionResult Get(string message)
 		{
-			return new OkObjectResult(message);
+			return Ok(message);
 		}
 	}
 }
