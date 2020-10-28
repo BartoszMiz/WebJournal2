@@ -4,24 +4,16 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:17202",
-      "sslPort": 44365
+      "applicationUrl": "http://localhost:58675",
+      "sslPort": 44375
     }
   },
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
     "WebJournal2.API": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "applicationUrl": "https://::1111",
+      "launchUrl": "api/echo/Hello,%20World!",
+      "applicationUrl": "https://localhost:1111",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
