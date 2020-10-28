@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Text;
+using System;
 
 namespace WebJournal2.API
 {
@@ -33,7 +34,8 @@ namespace WebJournal2.API
 						ValidateIssuerSigningKey = true,
 						ValidIssuer = Configuration["Jwt:Issuer"],
 						ValidAudience = Configuration["Jwt:Issuer"],
-						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+						IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"])),
+						ClockSkew = TimeSpan.Zero
 					};
 				});
 		}

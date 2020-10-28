@@ -24,6 +24,7 @@ namespace WebJournal2.API.Controllers
 			this.logger = logger;
 		}
 
+		[Authorize]
 		[HttpGet]
 		public IEnumerable<WeatherForecast> Get()
 		{
