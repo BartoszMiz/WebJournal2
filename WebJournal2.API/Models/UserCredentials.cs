@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace WebJournal2.API.Models
 {
 	public class UserCredentials
 	{
+		[JsonIgnore] [Key]
+		public uint Id { get; set; }
 		public string Username { get; set; }
 		public string Password { get; set; }
 	}
