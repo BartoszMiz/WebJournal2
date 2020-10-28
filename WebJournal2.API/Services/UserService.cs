@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,12 +18,12 @@ namespace WebJournal2.API.Services
 
 		public async Task<JournalUser> GetUserAsync(uint id)
 		{
-			return await db.Users.FirstAsync(x => x.Id == id);
+			return await db.Users.FirstOrDefaultAsync(x => x.Id == id);
 		}
 
-		public IEnumerable<JournalUser> GetUsers()
+		public JournalUser[] GetUsers()
 		{
-			return db.Users.OrderBy(x => x.Id);
+			return db.Users.OrderBy(x => x.Id).ToArray();
 		}
 
 		public async Task<JournalUser> AddUserAsync(JournalUser user)
@@ -34,16 +33,25 @@ namespace WebJournal2.API.Services
 			return addedUser;
 		}
 
-		public async Task<JournalUser> UpdateUser(JournalUser user)
+		public async Task<JournalUser> UpdateUserAsync(uint id, JournalUser newUser)
 		{
-			JournalUser updatedUser = db.Update(user).Entity;
+			var user = await GetUserAsync(id);
+			if (user == null)
+				return null;
+
+			db.Users.Update(newUser);
 			await db.SaveChangesAsync();
-			return updatedUser;
+			return await GetUserAsync(id);
 		}
 
-		public async Task<JournalUser> DeleteUserAsync(JournalUser user)
+		public async Task<JournalUser> DeleteUserAsync(uint id)
 		{
-			JournalUser deletedUser = db.Users.Remove(user).Entity;
+			var deletedUser = await GetUserAsync(id);
+
+			if (deletedUser == null)
+				return null;
+
+			db.Users.Remove(deletedUser);
 			await db.SaveChangesAsync();
 			return deletedUser;
 		}

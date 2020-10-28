@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
 namespace WebJournal2.Core.Models
@@ -10,7 +11,22 @@ namespace WebJournal2.Core.Models
 		public string FirstName { get; set; }
 		public string LastName { get; set; }
 
-		[JsonIgnore]
-		public UserCredentials Credentials { get; set; }
+		public string Username { get; set; }
+		public string Password { get; set; }
+
+		public JournalUser StripLoginData()
+		{
+			return new JournalUser { Id = Id, FirstName = FirstName, LastName = LastName };
+		}
+
+		public static JournalUser[] StripLoginData(JournalUser[] users)
+		{
+			for (int i = 0; i < users.Length; i++)
+			{
+				users[i] = users[i].StripLoginData();
+			}
+
+			return users;
+		}
 	}
 }

@@ -55,9 +55,9 @@ namespace WebJournal2.API
 					};
 				});
 
-			services.AddSingleton<JwtService>();
-			services.AddSingleton<UserService>();
-			services.AddSingleton<AuthenticationService>();
+			services.AddScoped<JwtService>();
+			services.AddScoped<UserService>();
+			services.AddScoped<AuthenticationService>();
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
