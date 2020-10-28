@@ -10,7 +10,7 @@ using System;
 using WebJournal2.API.Services;
 using System.Data.Common;
 using Microsoft.Data.Sqlite;
-using WebJournal2.API.Contexts;
+using WebJournal2.Core.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebJournal2.API

@@ -3,7 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebJournal2.API.Contexts;
+using WebJournal2.Core.Contexts;
 
 namespace WebJournal2.Migrations.Migrations
 {
@@ -16,7 +16,7 @@ namespace WebJournal2.Migrations.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.9");
 
-            modelBuilder.Entity("WebJournal2.API.Models.JournalUser", b =>
+            modelBuilder.Entity("WebJournal2.Core.Models.JournalUser", b =>
                 {
                     b.Property<uint>("Id")
                         .ValueGeneratedOnAdd()
@@ -38,7 +38,7 @@ namespace WebJournal2.Migrations.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("WebJournal2.API.Models.UserCredentials", b =>
+            modelBuilder.Entity("WebJournal2.Core.Models.UserCredentials", b =>
                 {
                     b.Property<uint>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,9 +55,9 @@ namespace WebJournal2.Migrations.Migrations
                     b.ToTable("UserCredentials");
                 });
 
-            modelBuilder.Entity("WebJournal2.API.Models.JournalUser", b =>
+            modelBuilder.Entity("WebJournal2.Core.Models.JournalUser", b =>
                 {
-                    b.HasOne("WebJournal2.API.Models.UserCredentials", "Credentials")
+                    b.HasOne("WebJournal2.Core.Models.UserCredentials", "Credentials")
                         .WithMany()
                         .HasForeignKey("CredentialsId");
                 });

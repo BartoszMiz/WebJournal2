@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebJournal2.API.Models;
+using WebJournal2.Core.Models;
 using WebJournal2.API.Services;
 
 namespace WebJournal2.API.Controllers

@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebJournal2.API.Models;
+using WebJournal2.Core.Models;
 
-namespace WebJournal2.API.Contexts
+namespace WebJournal2.Core.Contexts
 {
 	public class AppDbContext : DbContext
 	{

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace WebJournal2.API.Models
+namespace WebJournal2.Core.Models
 {
 	public class UserCredentials
 	{

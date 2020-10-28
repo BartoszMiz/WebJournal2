@@ -1,4 +1,4 @@
-﻿using WebJournal2.API.Models;
+﻿using WebJournal2.Core.Models;
 
 namespace WebJournal2.API.Services
 {

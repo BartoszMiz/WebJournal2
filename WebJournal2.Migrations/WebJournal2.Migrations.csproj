@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebJournal2.API\WebJournal2.API.csproj" />
+    <ProjectReference Include="..\WebJournal2.Core\WebJournal2.Core.csproj" />
   </ItemGroup>
 
 </Project>
