@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace WebJournal2.Core.Models
 {
-	public class UserCredentials
+	public class Credentials
 	{
 		public string Username { get; set; }
 		public string Password { get; set; }

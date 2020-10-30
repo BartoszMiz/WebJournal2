@@ -10,16 +10,18 @@ namespace WebJournal2.API.Services
 	{
 		public readonly string Issuer;
 		public readonly string Key;
+		public readonly TimeSpan defaultTokenLifespan;
 		private readonly JwtSecurityTokenHandler handler;
 
 		public JwtService(IConfiguration config)
 		{
 			Issuer = config["Jwt:Issuer"];
 			Key = config["Jwt:Key"];
+			defaultTokenLifespan = new TimeSpan(hours: 0, minutes: 20, seconds: 0);
 			handler = new JwtSecurityTokenHandler();
 		}
 
-		public string GenerateJSONWebToken()
+		public string GenerateJSONWebToken(TimeSpan tokenLifeSpan)
 		{
 			var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Key));
 			var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -27,9 +29,14 @@ namespace WebJournal2.API.Services
 				issuer: Issuer,
 				audience: Issuer,
 				claims: null,
-				expires: DateTime.Now.AddSeconds(30),
+				expires: DateTime.Now.Add(tokenLifeSpan),
 				signingCredentials: credentials);
 			return handler.WriteToken(token);
+		}
+
+		public string GenerateJSONWebToken()
+		{
+			return GenerateJSONWebToken(defaultTokenLifespan);
 		}
 	}
 }

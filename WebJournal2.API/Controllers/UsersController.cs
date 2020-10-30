@@ -23,48 +23,49 @@ namespace WebJournal2.API.Controllers
 		[HttpGet] [Authorize]
 		public IActionResult Get()
 		{
-			return Ok(JournalUser.StripLoginData((JournalUser[])userService.GetUsers()));
+			return Ok(userService.GetUsers());
 		}
 
 		[HttpGet("{id}")] [Authorize]
 		public async Task<IActionResult> Get(uint id)
 		{
-			return Ok((await userService.GetUserAsync(id)).StripLoginData());
+			return Ok(await userService.GetUserAsync(id).ConfigureAwait(false));
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> Post([FromBody] JournalUser user)
+		public async Task<IActionResult> Post([FromBody] RegistrationRequest registrationRequest)
 		{
+			var user = registrationRequest.ToJournalUser();
 			var users = userService.GetUsers();
 			if (users.Any(x => x.Username == user.Username))
-				return BadRequest();
+				return BadRequest($"{user.Username} is taken!");
 
-			var addedUser = await userService.AddUserAsync(user);
-			return Ok(addedUser.StripLoginData());
+			var addedUser = await userService.AddUserAsync(user).ConfigureAwait(false);
+			return Ok(addedUser);
 		}
 
 		// PUT api/<UsersController>/5
 		[HttpPut("{id}")]
 		public async Task<IActionResult> Put(uint id, [FromBody] JournalUser newUser)
 		{
-			var updatedUser = await userService.UpdateUserAsync(id, newUser);
+			var updatedUser = await userService.UpdateUserAsync(id, newUser).ConfigureAwait(false);
 
 			if (updatedUser == null)
-				return BadRequest();
+				return BadRequest($"User with id {id} does not exist!");
 
-			return Ok(updatedUser.StripLoginData());
+			return Ok(updatedUser);
 		}
 
 		// DELETE api/<UsersController>/5
 		[HttpDelete("{id}")] [Authorize]
 		public async Task<IActionResult> Delete(uint id)
 		{
-			var deletedUser = await userService.DeleteUserAsync(id);
+			var deletedUser = await userService.DeleteUserAsync(id).ConfigureAwait(false);
 
 			if (deletedUser == null)
-				return BadRequest();
+				return BadRequest($"User with id {id} does not exist!");
 
-			return Ok(deletedUser.StripLoginData());
+			return Ok(deletedUser);
 		}
 	}
 }

@@ -1,4 +1,4 @@
-﻿using System.Linq;
+﻿using System;
 using WebJournal2.Core.Models;
 
 namespace WebJournal2.API.Services
@@ -12,10 +12,9 @@ namespace WebJournal2.API.Services
 			this.userService = userService;
 		}
 
-		public JournalUser Authenticate(UserCredentials credentials)
+		public JournalUser Authenticate(Credentials credentials)
 		{
-			return userService.GetUsers()
-				.FirstOrDefault(x => x.Username == credentials.Username && x.Password == credentials.Password);
+			return Array.Find(userService.GetUsers(), x => x.Username == credentials.Username && x.Password == credentials.Password);
 		}
 	}
 }

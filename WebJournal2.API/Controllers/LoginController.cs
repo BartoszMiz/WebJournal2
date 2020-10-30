@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebJournal2.Core.Models;
 using WebJournal2.API.Services;
-using System.Threading.Tasks;
 
 namespace WebJournal2.API.Controllers
 {
@@ -19,14 +18,14 @@ namespace WebJournal2.API.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Login([FromBody] UserCredentials userCredentials)
+		public IActionResult Login([FromBody] Credentials credentials)
 		{
-			JournalUser user = auth.Authenticate(userCredentials).StripLoginData();
+			JournalUser user = auth.Authenticate(credentials);
 			if (user == null)
 				return Unauthorized();
 
 			string token = jwt.GenerateJSONWebToken();
-			return Ok(new { token , user});
+			return Ok(new { token , userId = user.Id});
 		}
 	}
 }
