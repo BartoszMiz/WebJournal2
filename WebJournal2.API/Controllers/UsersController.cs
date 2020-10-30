@@ -14,10 +14,12 @@ namespace WebJournal2.API.Controllers
 	public class UsersController : ControllerBase
 	{
 		private readonly UserService userService;
+		private readonly PasswordHashingService passwordHashingService;
 
-		public UsersController(UserService userService)
+		public UsersController(UserService userService, PasswordHashingService passwordHashingService)
 		{
 			this.userService = userService;
+			this.passwordHashingService = passwordHashingService;
 		}
 
 		[HttpGet] [Authorize]
@@ -40,6 +42,7 @@ namespace WebJournal2.API.Controllers
 			if (users.Any(x => x.Username == user.Username))
 				return BadRequest($"{user.Username} is taken!");
 
+			user.Password = passwordHashingService.HashPassword(user.Password);
 			var addedUser = await userService.AddUserAsync(user).ConfigureAwait(false);
 			return Ok(addedUser);
 		}
