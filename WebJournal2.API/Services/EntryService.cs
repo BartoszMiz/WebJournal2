@@ -34,9 +34,14 @@ namespace WebJournal2.API.Services
 
 		public async Task<JournalEntry> UpdateEntryAsync(JournalEntry entry)
 		{
-			var updatedEntry = db.Entries.Update(entry).Entity;
+			var updatedEntry = await GetEntryAsync(entry.Id).ConfigureAwait(false);
 			if (updatedEntry == null)
 				return null;
+
+			updatedEntry.Title = entry.Title;
+			updatedEntry.Content = entry.Content;
+			updatedEntry.SubmitDate = entry.SubmitDate;
+			updatedEntry = db.Entries.Update(updatedEntry).Entity;
 			await db.SaveChangesAsync().ConfigureAwait(false);
 			return updatedEntry;
 		}
