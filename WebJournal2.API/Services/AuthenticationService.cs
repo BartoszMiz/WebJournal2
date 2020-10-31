@@ -1,23 +1,23 @@
-﻿using System;
+﻿using System.Threading.Tasks;
 using WebJournal2.Core.Models;
 
 namespace WebJournal2.API.Services
 {
 	public class AuthenticationService
 	{
-		private readonly UserService userService;
+		private readonly PasswordService passwordService;
 		private readonly PasswordHashingService passwordHashingService;
 
-		public AuthenticationService(UserService userService, PasswordHashingService passwordHashingService)
+		public AuthenticationService(PasswordService passwordService, PasswordHashingService passwordHashingService)
 		{
-			this.userService = userService;
+			this.passwordService = passwordService;
 			this.passwordHashingService = passwordHashingService;
 		}
 
-		public JournalUser Authenticate(Credentials credentials)
+		public async Task<JournalPassword> AuthenticateAsync(string password)
 		{
-			var hashedPassword = passwordHashingService.HashPassword(credentials.Password);
-			return Array.Find(userService.GetUsers(), x => x.Username == credentials.Username && x.Password == hashedPassword);
+			var hashedPassword = passwordHashingService.HashPassword(password);
+			return await passwordService.GetPasswordAsync(hashedPassword).ConfigureAwait(false);
 		}
 	}
 }

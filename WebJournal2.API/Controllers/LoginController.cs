@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebJournal2.Core.Models;
 using WebJournal2.API.Services;
+using System.Threading.Tasks;
 
 namespace WebJournal2.API.Controllers
 {
@@ -18,14 +19,14 @@ namespace WebJournal2.API.Controllers
 		}
 
 		[HttpPost]
-		public IActionResult Login([FromBody] Credentials credentials)
+		public async Task<IActionResult> Login([FromBody] string password)
 		{
-			JournalUser user = auth.Authenticate(credentials);
-			if (user == null)
+			var foundPassword = await auth.AuthenticateAsync(password).ConfigureAwait(false);
+			if (foundPassword == null)
 				return Unauthorized();
 
 			string token = jwt.GenerateJSONWebToken();
-			return Ok(new { token , userId = user.Id});
+			return Ok(new { token });
 		}
 	}
 }

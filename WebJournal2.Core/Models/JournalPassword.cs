@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 
 namespace WebJournal2.Core.Models
 {
-	public class Credentials
+	public class JournalPassword
 	{
-		public string Username { get; set; }
+		[Key]
+		public uint Id { get; set; }
 		public string Password { get; set; }
 	}
 }

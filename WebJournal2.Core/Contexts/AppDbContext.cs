@@ -6,6 +6,6 @@ namespace WebJournal2.Core.Contexts
 	public class AppDbContext : DbContext
 	{
 		public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-		public DbSet<JournalUser> Users { get; set; }
+		public DbSet<JournalPassword> Passwords { get; set; }
 	}
 }

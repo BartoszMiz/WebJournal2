@@ -57,7 +57,7 @@ namespace WebJournal2.API
 
 			services.AddScoped<JwtService>();
 			services.AddScoped<PasswordHashingService>();
-			services.AddScoped<UserService>();
+			services.AddScoped<PasswordService>();
 			services.AddScoped<AuthenticationService>();
 		}
 

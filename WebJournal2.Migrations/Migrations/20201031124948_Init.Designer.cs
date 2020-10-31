@@ -8,7 +8,7 @@ using WebJournal2.Core.Contexts;
 namespace WebJournal2.Migrations.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20201028222341_Init")]
+    [Migration("20201031124948_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -17,27 +17,18 @@ namespace WebJournal2.Migrations.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.9");
 
-            modelBuilder.Entity("WebJournal2.Core.Models.JournalUser", b =>
+            modelBuilder.Entity("WebJournal2.Core.Models.JournalPassword", b =>
                 {
                     b.Property<uint>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("FirstName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LastName")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Password")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Username")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Passwords");
                 });
 #pragma warning restore 612, 618
         }
