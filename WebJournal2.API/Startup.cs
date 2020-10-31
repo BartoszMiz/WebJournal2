@@ -59,6 +59,7 @@ namespace WebJournal2.API
 			services.AddScoped<PasswordHashingService>();
 			services.AddScoped<PasswordService>();
 			services.AddScoped<AuthenticationService>();
+			services.AddScoped<EntryService>();
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
