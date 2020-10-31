@@ -2,8 +2,9 @@
 
 namespace WebJournal2.Core.Models
 {
-	public class JournalPassword : DbEntity
+	public abstract class DbEntity
 	{
-		public string Password { get; set; }
+		[Key]
+		public uint Id { get; set; }
 	}
 }
