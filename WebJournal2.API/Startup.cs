@@ -64,6 +64,15 @@ namespace WebJournal2.API
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
+			// Migrate database
+			using(var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
+			using(var db = scope.ServiceProvider.GetService<AppDbContext>())
+			{
+				Console.Write("Migrating datanase... ");
+				db.Database.Migrate();
+				Console.WriteLine("Done!");
+			}
+
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
