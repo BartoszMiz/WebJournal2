@@ -3,21 +3,59 @@ body
 	background-color: #202020;
 	color: #fcfcfc;
 	font-family: 'Quicksand', sans-serif;
-	
+	margin: 0px;
+}
+
+a
+{
+	color: inherit;
+	text-decoration: none;
+}
+
+a :hover
+{
+	text-decoration: underline;
+}
+
+.sticky
+{
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0px;
+}
+
+#navbar
+{
+	max-width: 100%;
+	background-color: #179635;
+	padding-left: 30px;
+	padding-right: 30px;
+	line-height: 64px;
+}
+
+#navbar-logo
+{
+	font-size: 50px;
+	vertical-align: middle;
+}
+
+#navbar-logo :hover
+{
+	text-decoration: none;
+}
+
+main
+{
 	max-width: 1000px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-/* .entry
-{
-	
-} */
-
 .entry-header
 {
 	font-size: 40px;
 	font-weight: bold;
+	margin-top: 20px;
 	margin-bottom: 5px;
 }
 
@@ -35,4 +73,11 @@ body
 	text-align: justify;
 	text-indent: 25px;
 	margin-bottom: 20px;
+}
+
+.entry-readmore
+{
+	float: right;
+	font-weight: lighter;
+	font-style: italic;
 }
