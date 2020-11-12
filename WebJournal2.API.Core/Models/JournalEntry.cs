@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebJournal2.Core.Models
+namespace WebJournal2.API.Core.Models
 {
 	public class JournalEntry : DbEntity
 	{

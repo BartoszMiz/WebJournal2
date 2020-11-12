@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebJournal2.API.Services;
-using WebJournal2.Core.Models;
+using WebJournal2.API.Core.Models;
 
 namespace WebJournal2.API.Controllers
 {

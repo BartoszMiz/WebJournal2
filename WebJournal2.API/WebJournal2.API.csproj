@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WebJournal2.Core\WebJournal2.Core.csproj" />
-    <ProjectReference Include="..\WebJournal2.Migrations\WebJournal2.Migrations.csproj" />
+    <ProjectReference Include="..\WebJournal2.API.Core\WebJournal2.API.Core.csproj" />
+    <ProjectReference Include="..\WebJournal2.API.Migrations\WebJournal2.API.Migrations.csproj" />
   </ItemGroup>
 </Project>
