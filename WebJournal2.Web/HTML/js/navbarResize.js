@@ -1,8 +1,11 @@
+// Settings
 const hideWidth = 645;
-const navbar = document.getElementById("navbar");
-const newBtn = document.getElementById("navbar-newentry");
+const navbarTextShrinksPercent = 0.8;
+
+const navbarLogo = document.getElementById("navbar-logo");
+const navbarLogoFontSize = parseFloat(getComputedStyle(navbarLogo).fontSize);
+const navbarLogoShrinkedFontSize = navbarTextShrinksPercent * navbarLogoFontSize;
 const newBtnText = document.getElementById("navbar-newentry-txt");
-const logoutBtn = document.getElementById("navbar-logout");
 const logoutBtnText = document.getElementById("navbar-logout-txt");
 
 function onNavbarResize()
@@ -10,13 +13,15 @@ function onNavbarResize()
 	let width = window.innerWidth;
 	if(width <= hideWidth)
 	{
-		newBtnText.style = "display: none;";
-		logoutBtnText.style = "display: none;";
+		navbarLogo.style.fontSize = `${navbarLogoShrinkedFontSize}px`;
+		newBtnText.style.display = "none";
+		logoutBtnText.style.display = "none";
 	}
 	else
 	{
-		newBtnText.style = null;
-		logoutBtnText.style = null;
+		navbarLogo.removeAttribute("style");
+		newBtnText.removeAttribute("style");
+		logoutBtnText.removeAttribute("style");
 	}
 };
 
