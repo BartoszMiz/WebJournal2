@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
-using WebJournal2.Core.Contexts;
-using WebJournal2.Core.Models;
+using WebJournal2.API.Core.Contexts;
+using WebJournal2.API.Core.Models;
 
 namespace WebJournal2.API.Services
 {

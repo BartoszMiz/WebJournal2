@@ -9,7 +9,7 @@ using System.Text;
 using System;
 using WebJournal2.API.Services;
 using Microsoft.Data.Sqlite;
-using WebJournal2.Core.Contexts;
+using WebJournal2.API.Core.Contexts;
 using Microsoft.EntityFrameworkCore;
 
 namespace WebJournal2.API
@@ -37,7 +37,7 @@ namespace WebJournal2.API
 
 			services.AddDbContext<AppDbContext>(options =>
 				options.UseSqlite(connectionString, opt =>
-					opt.MigrationsAssembly("WebJournal2.Migrations")));
+					opt.MigrationsAssembly("WebJournal2.API")));
 
 			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 				.AddJwtBearer(options =>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebJournal2.Migrations.Migrations
+namespace WebJournal2.API.Migrations
 {
     public partial class Init : Migration
     {

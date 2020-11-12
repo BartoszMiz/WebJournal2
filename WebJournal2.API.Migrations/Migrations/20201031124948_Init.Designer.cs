@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using WebJournal2.Core.Contexts;
+using WebJournal2.API.Core.Contexts;
 
-namespace WebJournal2.Migrations.Migrations
+namespace WebJournal2.API.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20201031124948_Init")]
@@ -17,7 +17,7 @@ namespace WebJournal2.Migrations.Migrations
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.9");
 
-            modelBuilder.Entity("WebJournal2.Core.Models.JournalPassword", b =>
+            modelBuilder.Entity("WebJournal2.API.Core.Models.JournalPassword", b =>
                 {
                     b.Property<uint>("Id")
                         .ValueGeneratedOnAdd()
