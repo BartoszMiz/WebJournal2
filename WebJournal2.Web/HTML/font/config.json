@@ -17,6 +17,24 @@
       "css": "pencil",
       "code": 9998,
       "src": "fontawesome"
+    },
+    {
+      "uid": "1b2ef17b42012a1e46743f9be8384f83",
+      "css": "left",
+      "code": 57556,
+      "src": "elusive"
+    },
+    {
+      "uid": "23012c4e68769e1f133bba1f93a734d1",
+      "css": "right",
+      "code": 57519,
+      "src": "elusive"
+    },
+    {
+      "uid": "f48ae54adfb27d8ada53d0fd9e34ee10",
+      "css": "trash-empty",
+      "code": 59177,
+      "src": "fontawesome"
     }
   ]
 }

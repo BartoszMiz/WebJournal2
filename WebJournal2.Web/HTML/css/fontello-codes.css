@@ -1,3 +1,6 @@
 
 .icon-pencil:before { content: '\270e'; } /* '✎' */
+.icon-right:before { content: '\e0af'; } /* '' */
+.icon-left:before { content: '\e0d4'; } /* '' */
+.icon-trash-empty:before { content: '\e729'; } /* '' */
 .icon-logout:before { content: '\e741'; } /* '' */
