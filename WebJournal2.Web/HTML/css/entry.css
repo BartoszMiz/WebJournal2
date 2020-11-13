@@ -1,0 +1,53 @@
+.entry-header
+{
+	text-align: center;
+	font-weight: bold;
+	font-size: 50px;
+	margin-top: 15px;
+	margin-bottom: 0px;
+}
+
+.entry-date
+{
+	text-align: center;
+	font-weight: lighter;
+	font-style: italic;
+	font-size: 15px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+.entry-nav
+{
+	text-align: center;
+	font-size: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.entry-nav-btn
+{
+	color: inherit;
+	background-color: #179635;
+	border: none;
+	outline: none;
+	border-radius: 10%;
+	padding: 6px;
+	font-size: inherit;
+}
+
+.edit-btn
+{
+	margin-left: 10px;
+	margin-right: 10px;
+	background-color: #2b48a8;
+}
+
+.entry-paragraph
+{
+	text-align: justify;
+	text-indent: 25px;
+	font-size: 18px;
+	margin-left: 5px;
+	margin-right: 5px;
+}

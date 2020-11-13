@@ -3,13 +3,35 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<link rel="stylesheet" href="css/style.css">
-	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/fontello.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/navbar.css">
+	<link rel="stylesheet" href="css/entry.css">
 
-	<meta name="description" content="Your own online and secure journal.">
 	<title>Web Journal 2</title>
+	<meta name="description" content="Your own online and secure journal.">
+	<meta name="author" content="Arte">
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 </head>
 <body>
+	<header class="sticky">
+		<nav>
+			<div id="navbar">
+				<a id="navbar-logo" href="#">Web Journal</a>
+				<div id="navbar-right">
+					<button class="navbar-btn" id="navbar-newentry" type="button">
+						<i class="demo-icon icon-pencil"></i>
+						<span id="navbar-newentry-txt">New</span>
+					</button>
+					<button class="navbar-btn" id="navbar-logout" type="button">
+						<i class="demo-icon icon-logout"></i>
+						<span id="navbar-logout-txt">Logout</span>
+					</button>
+				</div>
+			</div>
+		</nav>
+	</header>
 	<main>
 		<article>
 			<div class="entry">
@@ -21,6 +43,22 @@
 							(Pt.) 06-Nov-2020 20:16
 						</time>
 					</h3>
+					<h5 class="entry-nav">
+						<button class="entry-nav-btn" type="button">
+							<i class="demo-icon icon-left"></i>
+							Prev
+						</button>
+						<button class="entry-nav-btn edit-btn" type="button">
+							<i class="demo-icon icon-pencil"></i>
+							<span class="entry-nav-edit-btn">
+								Edit
+							</span>
+						</button>
+						<button class="entry-nav-btn" type="button">
+							Next
+							<i class="demo-icon icon-right"></i>
+						</button>
+					</h5>
 				</header>
 				<section>
 					<p class="entry-paragraph">
@@ -50,4 +88,8 @@
 			</div>
 		</article>
 	</main>
+	<footer>
+		Web Journal &copy; - 2020
+	</footer>
+	<script src="js/navbarResize.js"></script>
 </body>
