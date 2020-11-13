@@ -1,0 +1,38 @@
+body
+{
+	background-color: #202020;
+	background-image: url("/img/repeated-square-dark.png");
+	color: #fcfcfc;
+	font-family: 'Quicksand', sans-serif;
+	margin: 0px;
+}
+
+a
+{
+	color: inherit;
+	text-decoration: none;
+}
+
+a :hover
+{
+	text-decoration: underline;
+}
+
+main
+{
+	max-width: 1000px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+footer
+{
+	margin-top: 10px;
+	width: 100%;
+	background-color: #179635;
+	text-align: center;
+	font-size: 15px;
+	font-weight: lighter;
+	padding-top: 2.5px;
+	padding-bottom: 2.5px;
+}

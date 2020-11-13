@@ -1,0 +1,57 @@
+.sticky
+{
+	position: sticky;
+	position: -webkit-sticky;
+	top: 0px;
+}
+
+#navbar
+{
+	display: flex;
+	margin-top: 0px;
+	padding-left: 30px;
+	padding-right: 15px;
+	background-color: #179635;
+}
+
+#navbar-logo
+{
+	font-size: 50px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+#navbar-logo :hover
+{
+	text-decoration: none;
+}
+
+#navbar-right
+{
+	margin-left: auto;
+	display: inline-block;
+	text-align: right;
+	align-self: center;
+}
+
+.navbar-btn
+{
+	font-size: 25px;
+	padding: 7.5px;
+	border-radius: 10%;
+	border: none;
+	outline: none;
+	color: inherit;
+	cursor: pointer;
+}
+
+#navbar-newentry
+{
+	background-color: #2b48a8;
+	margin-right: 10px;
+}
+
+#navbar-logout
+{
+	background-color: #a301b9;
+}
