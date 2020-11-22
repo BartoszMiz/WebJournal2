@@ -5,7 +5,7 @@
 	top: 0px;
 }
 
-#navbar
+.navbar
 {
 	display: flex;
 	margin-top: 0px;
@@ -14,19 +14,19 @@
 	background-color: #179635;
 }
 
-#navbar-logo
+.navbar-logo
 {
 	font-size: 50px;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
 
-#navbar-logo :hover
+.navbar-logo :hover
 {
 	text-decoration: none;
 }
 
-#navbar-right
+.navbar-right
 {
 	margin-left: auto;
 	display: inline-block;
@@ -45,13 +45,13 @@
 	cursor: pointer;
 }
 
-#navbar-newentry
+.navbar-newentry
 {
 	background-color: #2b48a8;
 	margin-right: 10px;
 }
 
-#navbar-logout
+.navbar-logout
 {
 	background-color: #a301b9;
 }

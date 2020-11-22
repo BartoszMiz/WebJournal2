@@ -2,7 +2,7 @@
 const hideWidth = 645;
 const navbarTextShrinksPercent = 0.8;
 
-const navbarLogo = document.getElementById("navbar-logo");
+const navbarLogo = document.getElementsByClassName("navbar-logo")[0];
 const navbarLogoFontSize = parseFloat(getComputedStyle(navbarLogo).fontSize);
 const navbarLogoShrinkedFontSize = navbarTextShrinksPercent * navbarLogoFontSize;
 const newBtnText = document.getElementById("navbar-newentry-txt");
