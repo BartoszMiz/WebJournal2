@@ -36,3 +36,13 @@ footer
 	padding-top: 2.5px;
 	padding-bottom: 2.5px;
 }
+
+.btn
+{
+	padding: 0.35em;
+	border-radius: 5%;
+	border: none;
+	outline: none;
+	color: inherit;
+	cursor: pointer;
+}
