@@ -1,3 +1,13 @@
+:root
+{
+	--grey: rgb(38, 38,38);
+	--light-grey: rgb(56, 56, 56);
+	--lighter-grey: rgb(192, 192, 192);
+	--green: rgb(14, 92, 47);
+	--light-green: rgb(33, 115, 80);
+	--white: rgb(255, 255, 255);
+}
+
 body
 {
 	background-color: #101010;
