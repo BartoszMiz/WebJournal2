@@ -1,8 +1,20 @@
+@import "fontello.css";
+
+:root
+{
+	--grey: #262626;
+	--light-grey: #383838;
+	--lighter-grey: #c0c0c0;
+	--green: #459a45;
+	--blue: #3650a7;
+	--violet: #ad36bd;
+	--white: #ffffff;
+}
+
 body
 {
-	background-color: #101010;
-	/* background-image: url("/img/repeated-square-dark.png"); */
-	color: #fcfcfc;
+	background-color: var(--grey);
+	color: var(--white);
 	font-family: 'Quicksand', sans-serif;
 	margin: 0px;
 }
@@ -29,7 +41,7 @@ footer
 {
 	margin-top: 10px;
 	width: 100%;
-	background-color: #179635;
+	background-color: var(--green);
 	text-align: center;
 	font-size: 15px;
 	font-weight: lighter;

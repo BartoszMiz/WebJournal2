@@ -1,3 +1,5 @@
+@import "main.css";
+
 .login-header
 {
 	text-align: center;
@@ -26,5 +28,5 @@
 .login-btn
 {
 	font-size: 25px;
-	background-color: #179635;
+	background-color: var(--green);
 }
