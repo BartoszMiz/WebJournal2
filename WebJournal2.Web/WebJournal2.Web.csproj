@@ -7,6 +7,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\animation.css" />
+    <Content Remove="wwwroot\css\edit-entry.css" />
+    <Content Remove="wwwroot\css\entry-preview.css" />
+    <Content Remove="wwwroot\css\entry.css" />
+    <Content Remove="wwwroot\css\fontello-codes.css" />
+    <Content Remove="wwwroot\css\fontello-embedded.css" />
+    <Content Remove="wwwroot\css\fontello-ie7-codes.css" />
+    <Content Remove="wwwroot\css\fontello-ie7.css" />
+    <Content Remove="wwwroot\css\fontello.css" />
+    <Content Remove="wwwroot\css\login.css" />
+    <Content Remove="wwwroot\css\main.css" />
+    <Content Remove="wwwroot\css\navbar.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="3.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Build" Version="3.2.1" PrivateAssets="all" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="3.2.1" PrivateAssets="all" />
@@ -19,6 +34,32 @@
 
   <ItemGroup>
     <Folder Include="HTML\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\animation.css" />
+    <None Include="wwwroot\css\edit-entry.css" />
+    <None Include="wwwroot\css\entry-preview.css" />
+    <None Include="wwwroot\css\entry.css" />
+    <None Include="wwwroot\css\fontello-codes.css" />
+    <None Include="wwwroot\css\fontello-embedded.css" />
+    <None Include="wwwroot\css\fontello-ie7-codes.css" />
+    <None Include="wwwroot\css\fontello-ie7.css" />
+    <None Include="wwwroot\css\fontello.css" />
+    <None Include="wwwroot\css\login.css" />
+    <None Include="wwwroot\css\main.css" />
+    <None Include="wwwroot\css\navbar.css" />
+    <None Include="wwwroot\font\demo.html" />
+    <None Include="wwwroot\font\fontello.eot" />
+    <None Include="wwwroot\font\fontello.svg" />
+    <None Include="wwwroot\font\fontello.ttf" />
+    <None Include="wwwroot\font\fontello.woff" />
+    <None Include="wwwroot\font\fontello.woff2" />
+    <None Include="wwwroot\font\LICENSE.txt" />
+    <None Include="wwwroot\font\README.txt" />
+    <None Include="wwwroot\img\favicon.ico" />
+    <None Include="wwwroot\img\repeated-square-dark.png" />
+    <None Include="wwwroot\js\navbarResize.js" />
   </ItemGroup>
 
 </Project>
