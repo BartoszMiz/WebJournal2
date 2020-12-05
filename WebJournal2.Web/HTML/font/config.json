@@ -33,8 +33,14 @@
     {
       "uid": "f48ae54adfb27d8ada53d0fd9e34ee10",
       "css": "trash-empty",
-      "code": 59177,
+      "code": 59392,
       "src": "fontawesome"
+    },
+    {
+      "uid": "a204f0fa972408eaae5a363c444991b2",
+      "css": "login",
+      "code": 59393,
+      "src": "entypo"
     }
   ]
 }

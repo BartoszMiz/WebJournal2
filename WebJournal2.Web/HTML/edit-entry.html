@@ -4,8 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="css/fontello.css">
-	<link rel="stylesheet" href="css/main.css">
 	<link rel="stylesheet" href="css/edit-entry.css">
 
 	<title>Web Journal 2</title>
@@ -20,11 +18,14 @@
 		</h1>
 	</header>
 	<main>
-		<input class="entry-title" type="text" placeholder="Entry title">
-		<textarea class="entry-content"></textarea>
-		<button class="btn btn-submit">Submit</button>
-		<button class="btn btn-delete">Delete</button>
-		<button class="btn btn-cancel">Cancel</button>
+		<div class="edit-entry-form">
+			<input class="edit-entry-title" type="text" placeholder="Entry title">
+			<textarea class="edit-entry-content" rows="25"></textarea>
+			<div class="edit-entry-nav">
+				<button class="btn btn-cancel">Cancel</button>
+				<button class="btn btn-submit">Submit</button>
+			</div>
+		</div>
 	</main>
 </body>
 </html>
