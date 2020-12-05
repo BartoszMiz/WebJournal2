@@ -1,10 +1,10 @@
 {
-  "name": "WebJournal2.Web",
-  "short_name": "WebJournal2.Web",
+  "name": "Web Journal 2",
+  "short_name": "Web Journal 2",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#03173d",
+  "background_color": "#262626",
+  "theme_color": "#459a45",
   "icons": [
     {
       "src": "icon-512.png",
