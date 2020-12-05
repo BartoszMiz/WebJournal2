@@ -9,6 +9,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebJournal2.API.Core", "Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebJournal2.API.Migrations", "WebJournal2.API.Migrations\WebJournal2.API.Migrations.csproj", "{88367536-897D-48A7-8160-F7D8BAD32BA7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebJournal2.Web", "WebJournal2.Web\WebJournal2.Web.csproj", "{15CE2D09-65FA-4441-B561-D799EAF513E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F2691E2D-4DE5-4C78-AD89-83B68928222F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PWA", "PWA", "{AC6D7282-5545-4D38-9B51-304D6F61D90D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,9 +33,19 @@ Global
 		{88367536-897D-48A7-8160-F7D8BAD32BA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88367536-897D-48A7-8160-F7D8BAD32BA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88367536-897D-48A7-8160-F7D8BAD32BA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15CE2D09-65FA-4441-B561-D799EAF513E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15CE2D09-65FA-4441-B561-D799EAF513E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15CE2D09-65FA-4441-B561-D799EAF513E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15CE2D09-65FA-4441-B561-D799EAF513E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{747D55EF-13E3-47D6-A7D2-7BFED869A209} = {F2691E2D-4DE5-4C78-AD89-83B68928222F}
+		{A19A6DF4-943B-4A5F-A796-DCF8A8124651} = {F2691E2D-4DE5-4C78-AD89-83B68928222F}
+		{88367536-897D-48A7-8160-F7D8BAD32BA7} = {F2691E2D-4DE5-4C78-AD89-83B68928222F}
+		{15CE2D09-65FA-4441-B561-D799EAF513E2} = {AC6D7282-5545-4D38-9B51-304D6F61D90D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2E65E5A-BA29-4A20-996C-DC3717962664}
