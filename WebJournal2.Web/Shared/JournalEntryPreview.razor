@@ -1,9 +1,9 @@
 ﻿<article>
 	<div class="entry-preview">
 		<header>
-			<a href="view-entry.html">
+			<NavLink href="@viewEntryUrl">
 				<h1 class="entry-preview-header">Lorem ipsum dolor sit amet</h1>
-			</a>
+			</NavLink>
 			<h3 class="entry-preview-date">
 				<time>
 					@Entry.Date.ToString("(ddd) dd-MMM-yyyy HH:mm")
@@ -12,9 +12,9 @@
 		</header>
 		<p class="entry-preview-paragraph">
 			@Entry.GetParagraphs()[0]
-			<a href="view-entry.html">
+			<NavLink href="@viewEntryUrl">
 				<span class="entry-preview-readmore">Read more...</span>
-			</a>
+			</NavLink>
 		</p>
 	</div>
 </article>
@@ -30,4 +30,12 @@
 	public JournalEntry Entry { get; set; }
 	[Parameter]
 	public bool UseDivider { get; set; } = true;
+
+	private string viewEntryUrl;
+
+	protected override void OnInitialized()
+	{
+		viewEntryUrl = $"/view-entry/{Entry.Id}";
+		base.OnInitialized();
+	}
 }
