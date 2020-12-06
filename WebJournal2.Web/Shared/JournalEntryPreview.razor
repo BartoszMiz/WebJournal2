@@ -1,0 +1,33 @@
+﻿<article>
+	<div class="entry-preview">
+		<header>
+			<a href="view-entry.html">
+				<h1 class="entry-preview-header">Lorem ipsum dolor sit amet</h1>
+			</a>
+			<h3 class="entry-preview-date">
+				<time>
+					@Entry.Date.ToString("(ddd) dd-MMM-yyyy HH:mm")
+				</time>
+			</h3>
+		</header>
+		<p class="entry-preview-paragraph">
+			@Entry.GetParagraphs()[0]
+			<a href="view-entry.html">
+				<span class="entry-preview-readmore">Read more...</span>
+			</a>
+		</p>
+	</div>
+</article>
+
+@if (UseDivider)
+{
+	<hr class="entry-preview-divider">
+}
+
+@code
+{
+	[Parameter]
+	public JournalEntry Entry { get; set; }
+	[Parameter]
+	public bool UseDivider { get; set; } = true;
+}

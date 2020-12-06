@@ -62,4 +62,8 @@
     <None Include="wwwroot\js\navbarResize.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\WebJournal2.Web.Core\WebJournal2.Web.Core.csproj" />
+  </ItemGroup>
+
 </Project>
