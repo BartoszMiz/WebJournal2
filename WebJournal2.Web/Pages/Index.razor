@@ -1,15 +1,10 @@
 ﻿@page "/"
+@inject JournalEntryService EntryService;
 <main>
 	@for(uint i = 0; i < 10; i++)
 	{
 		bool useDivider = i < 10 - 1;
-		var entry = new JournalEntry
-		{
-			Id = i,
-			Title = "Lorem ipsum dolor sit amet",
-			Date = DateTime.Now,
-			Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Magna fringilla urna porttitor rhoncus. Quam nulla porttitor massa id. Ante metus dictum at tempor commodo ullamcorper a lacus vestibulum. Sagittis purus sit amet volutpat. Etiam non quam lacus suspendisse faucibus interdum posuere lorem. Eget sit amet tellus cras adipiscing. Proin sed libero enim sed. Id aliquet lectus proin nibh nisl condimentum id. In mollis nunc sed id semper risus. Elit ullamcorper dignissim cras tincidunt."
-		};
+		var entry = EntryService.GetEntry(1);
 		<JournalEntryPreview UseDivider="useDivider" Entry="entry"/>
 
 	}
