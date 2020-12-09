@@ -1,0 +1,24 @@
+﻿<header>
+    <h1 class="login-header">
+        Enter your password!
+    </h1>
+</header>
+<main>
+    <EditForm class="login-form" Model="Password" OnValidSubmit="OnValidSubmit">
+        <InputText class="login-password" type="password" placeholder="Your password" @bind-Value="Password"></InputText>
+        <div style="width: 100%;"></div>
+        <button class="btn login-btn" type="submit">
+            <i class="demo-icon icon-login"></i>
+            Log In
+        </button>
+    </EditForm>
+</main>
+
+@code
+{
+    public string Password { get; set; }
+    private void OnValidSubmit()
+    {
+
+    }
+}
