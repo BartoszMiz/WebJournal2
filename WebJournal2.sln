@@ -15,7 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{F2691E2D-4DE
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PWA", "PWA", "{AC6D7282-5545-4D38-9B51-304D6F61D90D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebJournal2.Web.Core", "WebJournal2.Web.Core\WebJournal2.Web.Core.csproj", "{035F105B-45A7-4EFD-9BFE-ED3DFDEB952E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebJournal2.Web.Core", "WebJournal2.Web.Core\WebJournal2.Web.Core.csproj", "{035F105B-45A7-4EFD-9BFE-ED3DFDEB952E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
