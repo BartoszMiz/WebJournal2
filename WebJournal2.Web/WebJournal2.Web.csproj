@@ -33,10 +33,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="HTML\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\css\animation.css" />
     <None Include="wwwroot\css\edit-entry.css" />
     <None Include="wwwroot\css\entry-preview.css" />
