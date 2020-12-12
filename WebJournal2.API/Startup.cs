@@ -37,7 +37,7 @@ namespace WebJournal2.API
 
 			services.AddDbContext<AppDbContext>(options =>
 				options.UseSqlite(connectionString, opt =>
-					opt.MigrationsAssembly("WebJournal2.API")));
+					opt.MigrationsAssembly("WebJournal2.API.Migrations")));
 
 			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 				.AddJwtBearer(options =>
