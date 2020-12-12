@@ -1,10 +1,12 @@
-﻿@inject IJSRuntime js;
+﻿@inject IJSRuntime js
+@inject NavigationManager nav
+
 <header class="sticky">
 	<nav>
 		<div class="navbar">
-			<a class="navbar-logo" href="#">Web Journal</a>
+			<NavLink class="navbar-logo" href="/">Web Journal</NavLink>
 			<div class="navbar-right">
-				<button class="btn navbar-btn navbar-newentry" type="button">
+				<button class="btn navbar-btn navbar-newentry" type="button" @onclick="GoToNewEntry">
 					<i class="demo-icon icon-pencil"></i>
 					<span id="navbar-newentry-txt">New</span>
 				</button>
@@ -24,5 +26,10 @@
 		js.InvokeVoidAsync("navbarResizeInit");
 		js.InvokeVoidAsync("onNavbarResize");
 		base.OnAfterRender(firstRender);
+	}
+
+	private void GoToNewEntry()
+	{
+		nav.NavigateTo("/new-entry");
 	}
 }
