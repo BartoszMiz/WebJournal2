@@ -18,6 +18,8 @@ namespace WebJournal2.Web
 
 			builder.Services.AddScoped<JournalEntryService>();
 
+			builder.Services.AddScoped<ApiInterfaceService>();
+
 			await builder.Build().RunAsync();
 		}
 	}

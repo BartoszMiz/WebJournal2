@@ -30,7 +30,7 @@ namespace WebJournal2.API.Controllers
 		{
 			var entry = await entryService.GetEntryAsync(id).ConfigureAwait(false);
 			if (entry == null)
-				return NotFound($"Entry with id {id} does not exist!");
+				return NotFound();
 			return Ok(entry);
 		}
 
