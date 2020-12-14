@@ -16,35 +16,35 @@ namespace WebJournal2.API.Services
 
 		public async Task<JournalPassword[]> GetPasswordsAsync()
 		{
-			return await db.Passwords.ToArrayAsync().ConfigureAwait(false);
+			return await db.Passwords.ToArrayAsync();
 		}
 
 		public async Task<uint> GetPasswordCountAsync()
 		{
-			return (uint)(await GetPasswordsAsync().ConfigureAwait(false)).Length;
+			return (uint)(await GetPasswordsAsync()).Length;
 		}
 
 		public async Task<JournalPassword> GetPasswordAsync(uint id)
 		{
-			return await db.Passwords.FirstOrDefaultAsync(x => x.Id == id).ConfigureAwait(false);
+			return await db.Passwords.FirstOrDefaultAsync(x => x.Id == id);
 		}
 
 		public async Task<JournalPassword> GetPasswordAsync(string password)
 		{
-			return await db.Passwords.FirstOrDefaultAsync(x => x.Password == password).ConfigureAwait(false);
+			return await db.Passwords.FirstOrDefaultAsync(x => x.Password == password);
 		}
 
 		public async Task<JournalPassword> AddPasswordAsync(JournalPassword password)
 		{
-			var addedPassword = (await db.Passwords.AddAsync(password).ConfigureAwait(false)).Entity;
-			await db.SaveChangesAsync().ConfigureAwait(false);
+			var addedPassword = (await db.Passwords.AddAsync(password)).Entity;
+			await db.SaveChangesAsync();
 			return addedPassword;
 		}
 
 		public async Task<JournalPassword> AddPasswordAsync(string password)
 		{
 			var journalPassword = new JournalPassword { Password = password };
-			return await AddPasswordAsync(journalPassword).ConfigureAwait(false);
+			return await AddPasswordAsync(journalPassword);
 		}
 	}
 }

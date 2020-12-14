@@ -21,12 +21,12 @@ namespace WebJournal2.API.Controllers
 		[HttpPost]
 		public async Task<IActionResult> AddFirstPassword([FromBody] string password)
 		{
-			uint passwordCount = await passwordService.GetPasswordCountAsync().ConfigureAwait(false);
+			uint passwordCount = await passwordService.GetPasswordCountAsync();
 			if (passwordCount > 0)
 				return Unauthorized("A password has already been registered!");
 
 			var hashedPassword = passwordHashingService.HashPassword(password);
-			await passwordService.AddPasswordAsync(hashedPassword).ConfigureAwait(false);
+			await passwordService.AddPasswordAsync(hashedPassword);
 			return Ok();
 		}
 	}
