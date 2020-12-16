@@ -15,7 +15,6 @@ namespace WebJournal2.API
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
 					webBuilder.UseStartup<Startup>();
-					webBuilder.UseUrls("https://::1111");
 				});
 	}
 }

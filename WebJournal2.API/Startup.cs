@@ -11,6 +11,7 @@ using WebJournal2.API.Services;
 using Microsoft.Data.Sqlite;
 using WebJournal2.API.Core.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Net.Http.Headers;
 
 namespace WebJournal2.API
 {
@@ -78,7 +79,12 @@ namespace WebJournal2.API
 				app.UseDeveloperExceptionPage();
 			}
 
-			app.UseHttpsRedirection();
+			app.UseCors(policy =>
+				policy.WithOrigins("http://localhost:2222")
+				.AllowAnyMethod()
+				.WithHeaders(HeaderNames.ContentType));
+
+			//app.UseHttpsRedirection();
 
 			app.UseRouting();
 

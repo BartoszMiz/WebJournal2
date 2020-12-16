@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Text;
 
 namespace WebJournal2.Web.Core.Services
 {
@@ -18,7 +19,7 @@ namespace WebJournal2.Web.Core.Services
 
 		public async Task<string> Authenticate(string password)
 		{
-			var requestContent = new StringContent(password);
+			var requestContent = new StringContent('"' + password + '"', Encoding.UTF8, "application/json");
 			var resp = await http.PostAsync(baseApiUrl + "/login", requestContent);
 			if(resp.IsSuccessStatusCode)
 			{

@@ -1,5 +1,13 @@
 ﻿@inherits LayoutComponentBase
+@inject AuthenticationService auth;
 
-<Navbar />
-@Body
-<Footer />
+@if (auth.IsAuthenticated)
+{
+    <Navbar />
+    @Body
+    <Footer />
+}
+else
+{
+    <Login />
+}

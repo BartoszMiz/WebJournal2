@@ -12,10 +12,9 @@
     "WebJournal2.API": {
       "commandName": "Project",
       "launchBrowser": false,
-      "launchUrl": "api/echo/Hello,%20World!",
-      "applicationUrl": "https://localhost:1111",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://0.0.0.0:1111;https://0.0.0.0:1112"
       }
     }
   }

@@ -23,6 +23,7 @@ namespace WebJournal2.Web.Core.Services
 			else
 			{
 				token = recievedToken;
+				isAuthenticated = true;
 				return true;
 			}
 		}
