@@ -16,9 +16,9 @@ namespace WebJournal2.Web
 
 			builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
+			builder.Services.AddScoped<ApiRequestService>();
 			builder.Services.AddScoped<JournalEntryService>();
-
-			builder.Services.AddScoped<ApiInterfaceService>();
+			builder.Services.AddScoped<AuthenticationService>();
 
 			await builder.Build().RunAsync();
 		}

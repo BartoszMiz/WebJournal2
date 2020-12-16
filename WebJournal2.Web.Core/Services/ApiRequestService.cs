@@ -2,17 +2,31 @@
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace WebJournal2.Web.Core.Services
 {
-	public class ApiInterfaceService
+	public class ApiRequestService
 	{
 		private readonly HttpClient http;
 		private const string baseApiUrl = "http://localhost:1111/api";
 
-		public ApiInterfaceService(HttpClient http)
+		public ApiRequestService(HttpClient http)
 		{
 			this.http = http;
+		}
+
+		public async Task<string> Authenticate(string password)
+		{
+			var requestContent = new StringContent(password);
+			var resp = await http.PostAsync(baseApiUrl + "/login", requestContent);
+			if(resp.IsSuccessStatusCode)
+			{
+				var content = await resp.Content.ReadAsStreamAsync();
+				var deserializedContent = await JsonSerializer.DeserializeAsync<Dictionary<string, string>>(content);
+				return deserializedContent["token"];
+			}
+			return null;
 		}
 
 		public async Task<JournalEntry[]> GetEntriesAsync()
