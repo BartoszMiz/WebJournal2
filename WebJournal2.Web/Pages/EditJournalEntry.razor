@@ -1,0 +1,23 @@
+﻿@page "/edit-entry/{Id:int}"
+@inject JournalEntryService entries;
+
+@if(entry != null)
+{
+	<JournalEntryForm Entry="entry" />
+}
+else
+{
+	<h1 class="edit-entry-header">Entry with id @Id does not exist!</h1>
+}
+
+@code
+{
+	[Parameter]
+	public int Id { get; set; }
+	private JournalEntry entry;
+
+	protected override void OnInitialized()
+	{
+		entry = entries.GetEntry((uint)Id);
+	}
+}

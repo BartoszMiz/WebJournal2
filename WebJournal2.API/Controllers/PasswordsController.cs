@@ -21,7 +21,7 @@ namespace WebJournal2.API.Controllers
 		[HttpGet]
 		public async Task<IActionResult> Get()
 		{
-			uint passwordCount = await passwordService.GetPasswordCountAsync().ConfigureAwait(false);
+			uint passwordCount = await passwordService.GetPasswordCountAsync();
 			return Ok(passwordCount);
 		}
 
@@ -29,10 +29,10 @@ namespace WebJournal2.API.Controllers
 		public async Task<IActionResult> Post([FromBody] string password)
 		{
 			var hashedPassword = passwordHashingService.HashPassword(password);
-			if (await passwordService.GetPasswordAsync(hashedPassword).ConfigureAwait(false) != null)
+			if (await passwordService.GetPasswordAsync(hashedPassword) != null)
 				return BadRequest("This password has been already registered!");
 
-			await passwordService.AddPasswordAsync(hashedPassword).ConfigureAwait(false);
+			await passwordService.AddPasswordAsync(hashedPassword);
 			return Ok();
 		}
 	}

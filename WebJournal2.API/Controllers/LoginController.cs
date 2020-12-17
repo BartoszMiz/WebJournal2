@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebJournal2.API.Core.Models;
 using WebJournal2.API.Services;
 using System.Threading.Tasks;
 
@@ -21,7 +20,7 @@ namespace WebJournal2.API.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Login([FromBody] string password)
 		{
-			var foundPassword = await auth.AuthenticateAsync(password).ConfigureAwait(false);
+			var foundPassword = await auth.AuthenticateAsync(password);
 			if (foundPassword == null)
 				return Unauthorized();
 

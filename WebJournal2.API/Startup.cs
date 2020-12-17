@@ -11,6 +11,7 @@ using WebJournal2.API.Services;
 using Microsoft.Data.Sqlite;
 using WebJournal2.API.Core.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Net.Http.Headers;
 
 namespace WebJournal2.API
 {
@@ -27,7 +28,7 @@ namespace WebJournal2.API
 		{
 			services.AddControllers();
 
-			string dbPassword = Configuration["Db:Password"];
+			string dbPassword = Configuration["Database:Password"];
 			string connectionString = new SqliteConnectionStringBuilder
 			{
 				DataSource = "app.db",
@@ -37,7 +38,7 @@ namespace WebJournal2.API
 
 			services.AddDbContext<AppDbContext>(options =>
 				options.UseSqlite(connectionString, opt =>
-					opt.MigrationsAssembly("WebJournal2.API")));
+					opt.MigrationsAssembly("WebJournal2.API.Migrations")));
 
 			services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 				.AddJwtBearer(options =>
@@ -78,7 +79,12 @@ namespace WebJournal2.API
 				app.UseDeveloperExceptionPage();
 			}
 
-			app.UseHttpsRedirection();
+			app.UseCors(policy =>
+				policy.WithOrigins("http://localhost:2222")
+				.AllowAnyMethod()
+				.WithHeaders(HeaderNames.ContentType));
+
+			//app.UseHttpsRedirection();
 
 			app.UseRouting();
 

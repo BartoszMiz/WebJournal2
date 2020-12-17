@@ -1,7 +1,8 @@
 ﻿@page "/view-entry/{Id:int}"
 @inject JournalEntryService EntryService;
+@inject NavigationManager nav;
 
-@if (Entry == null)
+@if (entry == null)
 {
 	<h1 class="entry-header">Entry #@Id not found!</h1>
 }
@@ -11,10 +12,10 @@ else
 		<article>
 			<div class="entry">
 				<header>
-					<h1 class="entry-header">@Entry.Title</h1>
+					<h1 class="entry-header">@entry.Title</h1>
 					<h3 class="entry-date">
 						<time>
-							@Entry.Date.ToString("(ddd) dd-MMM-yyyy HH:mm")
+							@entry.Date.ToString("(ddd) dd-MMM-yyyy HH:mm")
 						</time>
 					</h3>
 					<h5 class="entry-nav">
@@ -22,7 +23,7 @@ else
 							<i class="demo-icon icon-left"></i>
 							Prev
 						</button>
-						<button class="btn entry-nav-btn edit-btn" type="button">
+						<button class="btn entry-nav-btn edit-btn" type="button" @onclick="GoToEditPage">
 							<i class="demo-icon icon-pencil"></i>
 							Edit
 						</button>
@@ -36,7 +37,7 @@ else
 						</button>
 					</h5>
 				</header>
-				@foreach (string paragraph in Entry.Content.Split("<==>"))
+				@foreach (string paragraph in entry.Content.Split("<==>"))
 				{
 					<section>
 						<p class="entry-paragraph">
@@ -54,11 +55,15 @@ else
 {
 	[Parameter]
 	public int Id { get; set; }
-
-	public JournalEntry Entry { get; set; }
+	private JournalEntry entry;
 
 	protected override void OnInitialized()
 	{
-		Entry = EntryService.GetEntry((uint)Id);
+		entry = EntryService.GetEntry((uint)Id);
+	}
+
+	private void GoToEditPage()
+	{
+		nav.NavigateTo($"/edit-entry/{entry.Id}");
 	}
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace WebJournal2.Web.Core.Services
 {
@@ -22,10 +23,7 @@ namespace WebJournal2.Web.Core.Services
 
 		public JournalEntry GetEntry(uint id)
 		{
-			// Entry Ids start from 1
-			if (id - 1 < entries.Length && id - 1 >= 0)
-				return entries[id - 1];
-			return null;
+			return entries.FirstOrDefault(e => e.Id == id);
 		}
 
 		public JournalEntry[] GetEntries()

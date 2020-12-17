@@ -17,7 +17,7 @@ namespace WebJournal2.API.Services
 		public async Task<JournalPassword> AuthenticateAsync(string password)
 		{
 			var hashedPassword = passwordHashingService.HashPassword(password);
-			return await passwordService.GetPasswordAsync(hashedPassword).ConfigureAwait(false);
+			return await passwordService.GetPasswordAsync(hashedPassword);
 		}
 	}
 }
