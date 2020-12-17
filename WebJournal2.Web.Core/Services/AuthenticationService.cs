@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace WebJournal2.Web.Core.Services
 {
@@ -17,9 +18,23 @@ namespace WebJournal2.Web.Core.Services
 
 		public async Task<bool> Authenticate(string password)
 		{
-			string recievedToken = await requestService.Authenticate(password);
+			string recievedToken = string.Empty;
+			try
+			{
+				recievedToken = await requestService.Authenticate(password);
+			}
+			catch(HttpRequestException)
+			{
+				// For development only
+				// If api unavailable authenticate the user regardless of the password
+				token = string.Empty;
+				isAuthenticated = true;
+			}
+
 			if (recievedToken == null)
+			{
 				return false;
+			}
 			else
 			{
 				token = recievedToken;
