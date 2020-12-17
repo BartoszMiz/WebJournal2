@@ -28,7 +28,7 @@ namespace WebJournal2.API
 		{
 			services.AddControllers();
 
-			string dbPassword = Configuration["Db:Password"];
+			string dbPassword = Configuration["Database:Password"];
 			string connectionString = new SqliteConnectionStringBuilder
 			{
 				DataSource = "app.db",
