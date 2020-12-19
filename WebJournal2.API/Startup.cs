@@ -69,7 +69,7 @@ namespace WebJournal2.API
 			using(var scope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
 			using(var db = scope.ServiceProvider.GetService<AppDbContext>())
 			{
-				Console.Write("Migrating datanase... ");
+				Console.Write("Migrating database... ");
 				db.Database.Migrate();
 				Console.WriteLine("Done!");
 			}
