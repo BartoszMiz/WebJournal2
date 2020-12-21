@@ -12,7 +12,7 @@
 <main>
 	<EditForm class="login-form" Model="Password" OnValidSubmit="OnValidSubmitAsync">
 		<DataAnnotationsValidator />
-		<InputText class="login-password" type="password" placeholder="Your password" @bind-Value="Password"></InputText>
+		<InputText class="login-password" type="password" placeholder="Your password" @bind-Value="Password.Content"></InputText>
 		<div style="width: 100%;"></div>
 		<button class="btn login-btn" type="submit">
 			<i class="demo-icon icon-login"></i>
@@ -23,17 +23,17 @@
 
 @code
 {
-	public string Password { get; set; }
+	public Password Password { get; set; }
 
 	protected override void OnInitialized()
 	{
-		Password = string.Empty;
+		Password = new Password();
 	}
 
 	private async Task OnValidSubmitAsync()
 	{
 		await js.InvokeVoidAsync("console.log", "Sending the request...");
-		if (await auth.Authenticate(Password))
+		if (await auth.Authenticate(Password.Content))
 			nav.NavigateTo(nav.Uri);
 	}
 }
