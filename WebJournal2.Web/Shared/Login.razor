@@ -1,8 +1,6 @@
-﻿@using System.ComponentModel.DataAnnotations;
-@inject	IJSRuntime js;
+﻿@inject	IJSRuntime js;
 @inject AuthenticationService auth;
 @inject NavigationManager nav;
-@inject HttpClient http;
 
 <header>
 	<h1 class="login-header">
@@ -24,8 +22,12 @@
 
 	private async Task OnValidSubmitAsync()
 	{
-		await js.InvokeVoidAsync("console.log", "Sending the request...");
+		await js.InvokeVoidAsync("SetPasswordMessageText", "Authenticating...");
 		if (await auth.Authenticate(Password.Content))
 			nav.NavigateTo(nav.Uri);
+		else
+		{
+			await js.InvokeVoidAsync("SetPasswordMessageText", "Wrong password!");
+		}
 	}
 }

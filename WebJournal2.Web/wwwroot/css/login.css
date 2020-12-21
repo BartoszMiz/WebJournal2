@@ -28,3 +28,9 @@
 	font-size: 25px;
 	background-color: var(--green);
 }
+
+.login-password-message
+{
+	color:var(--red);
+	margin-top: 15px;
+}
