@@ -1,4 +1,4 @@
-﻿using System.Net.Http;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace WebJournal2.Web.Core.Services
@@ -18,10 +18,10 @@ namespace WebJournal2.Web.Core.Services
 
 		public async Task<bool> Authenticate(string password)
 		{
-			string recievedToken = string.Empty;
+			string receivedToken = string.Empty;
 			try
 			{
-				recievedToken = await requestService.Authenticate(password);
+				receivedToken = await requestService.Authenticate(password);
 			}
 			catch(HttpRequestException)
 			{
@@ -31,13 +31,13 @@ namespace WebJournal2.Web.Core.Services
 				isAuthenticated = true;
 			}
 
-			if (recievedToken == null)
+			if (receivedToken == null)
 			{
 				return false;
 			}
 			else
 			{
-				token = recievedToken;
+				token = receivedToken;
 				isAuthenticated = true;
 				return true;
 			}
