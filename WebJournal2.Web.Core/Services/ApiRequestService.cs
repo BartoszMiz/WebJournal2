@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Http;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Text;
@@ -53,6 +54,18 @@ namespace WebJournal2.Web.Core.Services
 				return null;
 			var stream = await resp.Content.ReadAsStreamAsync();
 			return await JsonSerializer.DeserializeAsync<JournalEntry>(stream);
+		}
+
+		public async Task PostEntry(JournalEntry entry)
+		{
+			var serializerOptions = new JsonSerializerOptions
+			{
+				IgnoreNullValues = true
+			};
+			string entryJson = JsonSerializer.Serialize(entry, serializerOptions);
+
+			var requestContent = new StringContent(entryJson, Encoding.UTF8, "application/json");
+			await http.PostAsync(baseApiUrl + "/entries", requestContent);
 		}
 	}
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace WebJournal2.Web.Core.Services
 {
@@ -29,7 +30,13 @@ namespace WebJournal2.Web.Core.Services
 		{
 			if(entries == null || entries.Length == 0)
 				await FetchEntries();
-			return entries;
+			return entries.OrderByDescending(x => x.Id).ToArray();
+		}
+
+		public async Task AddEntry(JournalEntry entry)
+		{
+			await api.PostEntry(entry);
+			await FetchEntries();
 		}
 	}
 }

@@ -1,23 +1,24 @@
 @page "/edit-entry/{Id:int}"
 @inject JournalEntryService entries
+@inject NavigationService nav
 
 @if(entry != null)
 {
-	<JournalEntryForm Entry="entry" />
+	<JournalEntryForm Entry="entry" OnCancel="nav.GoToIndexPage" />
 }
 else
 {
-	<h1 class="edit-entry-header">Entry with id @Id does not exist!</h1>
+	<h1 class="edit-entry-header">Entry #@Id does not exist!</h1>
 }
 
 @code
 {
-	[Parameter]
-	public int Id { get; set; }
+	[Parameter] public int Id { get; set; }
 	private JournalEntry entry;
 
 	protected override async Task OnInitializedAsync()
 	{
 		entry = await entries.GetEntry((uint)Id);
+		entry.Content = entry?.Content.Replace("<==>", "\n\n");
 	}
 }

@@ -1,5 +1,5 @@
 <header>
-	@if(Entry.Id == 0)
+	@if(Entry.Id == null)
 	{
 		<h1 class="edit-entry-header">New Entry</h1>
 	}
@@ -13,12 +13,16 @@
 		<EditForm Model="Entry" OnSubmit="OnSubmit" OnInvalidSubmit="OnInvalidSubmit" OnValidSubmit="OnValidSubmit">
 			<DataAnnotationsValidator />
 			<InputText class="edit-entry-title" placeholder="Title" @bind-Value="Entry.Title"></InputText>
-			<InputTextArea class="edit-entry-content" rows="25" placeholder="What's up?" @bind-Value="EntryContent"></InputTextArea>
+			<InputTextArea class="edit-entry-content" rows="25" placeholder="What's up?" @bind-Value="Entry.Content"></InputTextArea>
+			<div class="login-password-message">
+				<ValidationMessage For="@(() => Entry.Title)" />
+				<ValidationMessage For="@(() => Entry.Content)" />
+			</div>
+			<div class="edit-entry-nav">
+				<button class="btn btn-cancel" type="button" @onclick="OnCancel">Cancel</button>
+				<button class="btn btn-submit" type="submit">Submit</button>
+			</div>
 		</EditForm>
-		<div class="edit-entry-nav">
-			<button class="btn btn-cancel" type="button" @onclick="OnCancel">Cancel</button>
-			<button class="btn btn-submit" type="submit">Submit</button>
-		</div>
 	</div>
 </main>
 
@@ -29,11 +33,4 @@
 	[Parameter] public EventCallback OnValidSubmit { get; set; }
 	[Parameter] public EventCallback OnInvalidSubmit { get; set; }
 	[Parameter] public EventCallback OnCancel { get; set; }
-
-	public string EntryContent {get; set;}
-
-	protected override void OnInitialized()
-	{
-		EntryContent = Entry.Content.Replace("<==>", "\n\n");
-	}
 }

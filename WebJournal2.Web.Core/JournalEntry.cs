@@ -1,16 +1,20 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 namespace WebJournal2.Web.Core
 {
 	public class JournalEntry
 	{
 		[JsonPropertyName("id")]
-		public uint Id { get; set; }
+		public uint? Id { get; set; }
 
 		[JsonPropertyName("title")]
+		[Required(ErrorMessage = "Title is required")]
+		[MaxLength(60, ErrorMessage = "Title cannot be longer than 50 chracters!")]
 		public string Title { get; set; }
 
 		[JsonPropertyName("content")]
+		[Required(ErrorMessage = "Entry must contain text!")]
 		public string Content { get; set; }
 
 		[JsonPropertyName("submitDate")]
@@ -18,6 +22,7 @@ namespace WebJournal2.Web.Core
 
 		public JournalEntry()
 		{
+			Id = null;
 			Title = string.Empty;
 			Content = string.Empty;
 			SubmitDate = DateTime.Now;

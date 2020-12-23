@@ -1,2 +1,24 @@
 @page "/new-entry"
-<JournalEntryForm Entry="new JournalEntry()"></JournalEntryForm>
+@inject NavigationService nav
+@inject JournalEntryService entries
+@inject IJSRuntime js
+
+<JournalEntryForm Entry="entry" OnValidSubmit="SubmitNewEntry" OnCancel="nav.GoToIndexPage"></JournalEntryForm>
+
+@code
+{
+	private JournalEntry entry;
+
+	protected override void OnInitialized()
+	{
+		entry = new JournalEntry();
+	}
+
+	private async Task SubmitNewEntry()
+	{
+		await js.InvokeVoidAsync("console.log", "Valid submit!!");
+		entry.Content = entry.Content.Replace("\n\n", "<==>");
+		await entries.AddEntry(entry);
+		nav.GoToIndexPage();
+	}
+}
