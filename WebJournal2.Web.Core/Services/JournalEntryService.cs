@@ -1,33 +1,34 @@
 using System;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace WebJournal2.Web.Core.Services
 {
 	public class JournalEntryService
 	{
+		private readonly ApiRequestService api;
 		private JournalEntry[] entries;
 
-		public JournalEntryService()
+		public JournalEntryService(ApiRequestService api)
 		{
-			entries = new JournalEntry[1]
-			{
-				new JournalEntry
-				{
-					Id = 1,
-					Title = "Lorem ipsum dolor sit amet",
-					Date = DateTime.Now,
-					Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Magna fringilla urna porttitor rhoncus. Quam nulla porttitor massa id. Ante metus dictum at tempor commodo ullamcorper a lacus vestibulum. Sagittis purus sit amet volutpat. Etiam non quam lacus suspendisse faucibus interdum posuere lorem. Eget sit amet tellus cras adipiscing. Proin sed libero enim sed. Id aliquet lectus proin nibh nisl condimentum id. In mollis nunc sed id semper risus. Elit ullamcorper dignissim cras tincidunt."
-				}
-			};
+			this.api = api;
 		}
 
-		public JournalEntry GetEntry(uint id)
+		public async Task FetchEntries()
 		{
-			return entries.FirstOrDefault(e => e.Id == id);
+			entries = await api.GetEntriesAsync();
 		}
 
-		public JournalEntry[] GetEntries()
+		public async Task<JournalEntry> GetEntry(uint id)
 		{
+			if(entries == null || entries.Length == 0)
+				await FetchEntries();
+			return Array.Find(entries, e => e.Id == id);
+		}
+
+		public async Task<JournalEntry[]> GetEntries()
+		{
+			if(entries == null || entries.Length == 0)
+				await FetchEntries();
 			return entries;
 		}
 	}

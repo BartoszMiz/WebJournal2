@@ -1,5 +1,5 @@
 @page "/edit-entry/{Id:int}"
-@inject JournalEntryService entries;
+@inject JournalEntryService entries
 
 @if(entry != null)
 {
@@ -16,8 +16,8 @@ else
 	public int Id { get; set; }
 	private JournalEntry entry;
 
-	protected override void OnInitialized()
+	protected override async Task OnInitializedAsync()
 	{
-		entry = entries.GetEntry((uint)Id);
+		entry = await entries.GetEntry((uint)Id);
 	}
 }

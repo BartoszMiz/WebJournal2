@@ -1,6 +1,6 @@
-@inject	IJSRuntime js;
-@inject AuthenticationService auth;
-@inject NavigationManager nav;
+@inject	IJSRuntime js
+@inject AuthenticationService auth
+@inject NavigationService nav
 
 <header>
 	<h1 class="login-header">
@@ -24,7 +24,7 @@
 	{
 		await js.InvokeVoidAsync("SetPasswordMessageText", "Authenticating...");
 		if (await auth.Authenticate(Password.Content))
-			nav.NavigateTo(nav.Uri);
+			nav.RefreshPage();
 		else
 		{
 			await js.InvokeVoidAsync("SetPasswordMessageText", "Wrong password!");

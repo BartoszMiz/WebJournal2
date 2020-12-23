@@ -1,11 +1,29 @@
 @page "/"
-@inject JournalEntryService EntryService;
+@inject JournalEntryService entries
 <main>
-	@for(uint i = 0; i < 10; i++)
+	@if(cachedEntries == null)
 	{
-		bool useDivider = i < 10 - 1;
-		var entry = EntryService.GetEntry(1);
-		<JournalEntryPreview UseDivider="useDivider" Entry="entry"/>
-
+		<h1 class="entry-preview-header">No entries found!</h1>
 	}
+	else
+	{
+		for(uint i = 0; i < cachedEntries.Length; i++)
+		{
+			bool useDivider = i < cachedEntries.Length - 1;
+			var entry = cachedEntries[i];
+			<JournalEntryPreview UseDivider="useDivider" Entry="entry"/>
+		}
+	}
+
 </main>
+
+@code
+{
+	private JournalEntry[] cachedEntries;
+
+	protected override async Task OnInitializedAsync()
+	{
+		cachedEntries = await entries.GetEntries();
+		await base.OnInitializedAsync();
+	}
+}

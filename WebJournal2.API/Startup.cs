@@ -80,9 +80,9 @@ namespace WebJournal2.API
 			}
 
 			app.UseCors(policy =>
-				policy.WithOrigins("http://localhost:2222")
+				policy.AllowAnyOrigin()
 				.AllowAnyMethod()
-				.WithHeaders(HeaderNames.ContentType));
+				.AllowAnyHeader());
 
 			//app.UseHttpsRedirection();
 

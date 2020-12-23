@@ -1,5 +1,6 @@
 @inject IJSRuntime js
-@inject NavigationManager nav
+@inject NavigationService nav
+@inject AuthenticationService auth
 
 <header class="sticky">
 	<nav>
@@ -10,7 +11,7 @@
 					<i class="demo-icon icon-pencil"></i>
 					<span id="navbar-newentry-txt">New</span>
 				</button>
-				<button class="btn navbar-btn navbar-logout" type="button">
+				<button class="btn navbar-btn navbar-logout" type="button" @onclick="Logout">
 					<i class="demo-icon icon-logout"></i>
 					<span id="navbar-logout-txt">Logout</span>
 				</button>
@@ -28,8 +29,13 @@
 		base.OnAfterRender(firstRender);
 	}
 
+	private void Logout()
+	{
+		auth.Deauthenticate();
+		nav.RefreshPage();
+	}
 	private void GoToNewEntry()
 	{
-		nav.NavigateTo("/new-entry");
+		nav.GoToNewEntryPage();
 	}
 }

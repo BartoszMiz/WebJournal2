@@ -1,13 +1,20 @@
 using System;
-
+using System.Text.Json.Serialization;
 namespace WebJournal2.Web.Core
 {
 	public class JournalEntry
 	{
+		[JsonPropertyName("id")]
 		public uint Id { get; set; }
+
+		[JsonPropertyName("title")]
 		public string Title { get; set; }
+
+		[JsonPropertyName("content")]
 		public string Content { get; set; }
-		public DateTime Date { get; set; }
+
+		[JsonPropertyName("submitDate")]
+		public DateTime SubmitDate { get; set; }
 
 		public JournalEntry() { }
 
@@ -16,7 +23,7 @@ namespace WebJournal2.Web.Core
 			Id = id;
 			Title = title;
 			Content = content;
-			Date = date;
+			SubmitDate = date;
 		}
 
 		public string[] GetParagraphs()
