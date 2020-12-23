@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using WebJournal2.API.Core.Models;
 
 namespace WebJournal2.API.Core.Contexts
