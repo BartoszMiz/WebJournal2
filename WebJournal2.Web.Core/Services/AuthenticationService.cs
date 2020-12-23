@@ -18,17 +18,14 @@ namespace WebJournal2.Web.Core.Services
 
 		public async Task<bool> Authenticate(string password)
 		{
-			string receivedToken = string.Empty;
+			string receivedToken;
 			try
 			{
 				receivedToken = await requestService.Authenticate(password);
 			}
 			catch(HttpRequestException)
 			{
-				// For development only
-				// If api unavailable authenticate the user regardless of the password
-				authToken.Token = string.Empty;
-				isAuthenticated = true;
+				return false;
 			}
 
 			if (receivedToken == null)
