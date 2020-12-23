@@ -1,14 +1,19 @@
 <header>
-	<h1 class="edit-entry-header">
-		Entry #@Entry.Id
-	</h1>
+	@if(Entry.Id == 0)
+	{
+		<h1 class="edit-entry-header">New Entry</h1>
+	}
+	else
+	{
+		<h1 class="edit-entry-header">Entry #@Entry.Id</h1>
+	}
 </header>
 <main>
 	<div class="edit-entry-form">
 		<EditForm Model="Entry" OnSubmit="OnSubmit" OnInvalidSubmit="OnInvalidSubmit" OnValidSubmit="OnValidSubmit">
 			<DataAnnotationsValidator />
-			<InputText class="edit-entry-title" placeholder="Entry title" @bind-Value="Entry.Title"></InputText>
-			<InputTextArea class="edit-entry-content" rows="25" placeholder="What's up?" @bind-Value="Entry.Content"></InputTextArea>
+			<InputText class="edit-entry-title" placeholder="Title" @bind-Value="Entry.Title"></InputText>
+			<InputTextArea class="edit-entry-content" rows="25" placeholder="What's up?" @bind-Value="EntryContent"></InputTextArea>
 		</EditForm>
 		<div class="edit-entry-nav">
 			<button class="btn btn-cancel" type="button" @onclick="OnCancel">Cancel</button>
@@ -24,4 +29,11 @@
 	[Parameter] public EventCallback OnValidSubmit { get; set; }
 	[Parameter] public EventCallback OnInvalidSubmit { get; set; }
 	[Parameter] public EventCallback OnCancel { get; set; }
+
+	public string EntryContent {get; set;}
+
+	protected override void OnInitialized()
+	{
+		EntryContent = Entry.Content.Replace("<==>", "\n\n");
+	}
 }

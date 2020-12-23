@@ -43,10 +43,6 @@ namespace WebJournal2.Web.Core.Services
 			if (!resp.IsSuccessStatusCode)
 				return null;
 			var stream = await resp.Content.ReadAsStreamAsync();
-
-			var content = await resp.Content.ReadAsStringAsync();
-			await js.InvokeVoidAsync("console.log", content);
-
 			return await JsonSerializer.DeserializeAsync<JournalEntry[]>(stream);
 		}
 

@@ -16,7 +16,12 @@ namespace WebJournal2.Web.Core
 		[JsonPropertyName("submitDate")]
 		public DateTime SubmitDate { get; set; }
 
-		public JournalEntry() { }
+		public JournalEntry()
+		{
+			Title = string.Empty;
+			Content = string.Empty;
+			SubmitDate = DateTime.Now;
+		 }
 
 		public JournalEntry(uint id, string title, string content, DateTime date)
 		{

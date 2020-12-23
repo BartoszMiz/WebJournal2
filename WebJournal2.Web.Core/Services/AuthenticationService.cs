@@ -7,7 +7,7 @@ namespace WebJournal2.Web.Core.Services
 	{
 		private readonly ApiRequestService requestService;
 		private readonly AuthTokenHolder authToken;
-		private bool isAuthenticated = false;
+		private bool isAuthenticated;
 		public bool IsAuthenticated => isAuthenticated;
 
 		public AuthenticationService(ApiRequestService requestService, AuthTokenHolder authToken)
