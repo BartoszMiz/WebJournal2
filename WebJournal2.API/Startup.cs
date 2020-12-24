@@ -84,7 +84,7 @@ namespace WebJournal2.API
 				.AllowAnyMethod()
 				.AllowAnyHeader());
 
-			//app.UseHttpsRedirection();
+			app.UseHttpsRedirection();
 
 			app.UseRouting();
 

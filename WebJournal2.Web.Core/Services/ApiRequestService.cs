@@ -13,14 +13,12 @@ namespace WebJournal2.Web.Core.Services
 	public class ApiRequestService
 	{
 		public readonly HttpClient http;
-		private readonly AuthTokenHolder authToken;
 		private readonly IJSRuntime js;
-		private const string baseApiUrl = "http://localhost:1111/api";
+		private const string baseApiUrl = "https://localhost:1111/api";
 
-		public ApiRequestService(HttpClient http, AuthTokenHolder authToken, IJSRuntime js)
+		public ApiRequestService(HttpClient http, IJSRuntime js)
 		{
 			this.http = http;
-			this.authToken = authToken;
 			this.js = js;
 		}
 
