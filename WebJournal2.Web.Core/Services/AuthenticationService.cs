@@ -1,4 +1,5 @@
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace WebJournal2.Web.Core.Services
@@ -21,7 +22,7 @@ namespace WebJournal2.Web.Core.Services
 			string receivedToken;
 			try
 			{
-				receivedToken = await requestService.Authenticate(password);
+				receivedToken = await requestService.AuthenticateAsync(password);
 			}
 			catch(HttpRequestException)
 			{
@@ -36,6 +37,7 @@ namespace WebJournal2.Web.Core.Services
 			{
 				authToken.Token = receivedToken;
 				isAuthenticated = true;
+				requestService.http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken.Token);
 				return true;
 			}
 		}

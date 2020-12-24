@@ -12,7 +12,7 @@ namespace WebJournal2.Web.Core.Services
 {
 	public class ApiRequestService
 	{
-		private readonly HttpClient http;
+		public readonly HttpClient http;
 		private readonly AuthTokenHolder authToken;
 		private readonly IJSRuntime js;
 		private const string baseApiUrl = "http://localhost:1111/api";
@@ -24,7 +24,7 @@ namespace WebJournal2.Web.Core.Services
 			this.js = js;
 		}
 
-		public async Task<string> Authenticate(string password)
+		public async Task<string> AuthenticateAsync(string password)
 		{
 			var requestContent = new StringContent('"' + password + '"', Encoding.UTF8, "application/json");
 			var resp = await http.PostAsync(baseApiUrl + "/login", requestContent);
@@ -39,7 +39,6 @@ namespace WebJournal2.Web.Core.Services
 
 		public async Task<JournalEntry[]> GetEntriesAsync()
 		{
-			http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken.Token);
 			var resp = await http.GetAsync(baseApiUrl + "/entries");
 			if (!resp.IsSuccessStatusCode)
 				return null;
@@ -56,7 +55,7 @@ namespace WebJournal2.Web.Core.Services
 			return await JsonSerializer.DeserializeAsync<JournalEntry>(stream);
 		}
 
-		public async Task PostEntry(JournalEntry entry)
+		public async Task PostEntryAsync(JournalEntry entry)
 		{
 			var serializerOptions = new JsonSerializerOptions
 			{
@@ -66,6 +65,11 @@ namespace WebJournal2.Web.Core.Services
 
 			var requestContent = new StringContent(entryJson, Encoding.UTF8, "application/json");
 			await http.PostAsync(baseApiUrl + "/entries", requestContent);
+		}
+
+		public async Task DeleteEntryAsync(uint entryId)
+		{
+			await http.DeleteAsync($"{baseApiUrl}/entries/{entryId}");
 		}
 	}
 }

@@ -35,7 +35,13 @@ namespace WebJournal2.Web.Core.Services
 
 		public async Task AddEntry(JournalEntry entry)
 		{
-			await api.PostEntry(entry);
+			await api.PostEntryAsync(entry);
+			await FetchEntries();
+		}
+
+		public async Task DeleteEntryAsync(uint entryId)
+		{
+			await api.DeleteEntryAsync(entryId);
 			await FetchEntries();
 		}
 	}
