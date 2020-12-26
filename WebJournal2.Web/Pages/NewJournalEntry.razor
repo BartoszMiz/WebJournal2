@@ -18,7 +18,7 @@
 	{
 		await js.InvokeVoidAsync("console.log", "Valid submit!!");
 		entry.Content = entry.Content.Replace("\n\n", "<==>");
-		await entries.AddEntry(entry);
+		await entries.AddEntryAsync(entry);
 		nav.GoToIndexPage();
 	}
 }

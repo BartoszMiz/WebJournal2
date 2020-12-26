@@ -23,7 +23,7 @@
 
 	protected override async Task OnInitializedAsync()
 	{
-		cachedEntries = await entries.GetEntries();
+		cachedEntries = await entries.GetEntriesAsync();
 		await base.OnInitializedAsync();
 	}
 }

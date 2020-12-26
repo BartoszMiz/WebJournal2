@@ -65,6 +65,14 @@ namespace WebJournal2.Web.Core.Services
 			await http.PostAsync(baseApiUrl + "/entries", requestContent);
 		}
 
+		public async Task PutEntryAsync(JournalEntry entry)
+		{
+			string entryJson = JsonSerializer.Serialize(entry);
+			await js.InvokeVoidAsync("console.log", entryJson);
+			var requestContent = new StringContent(entryJson, Encoding.UTF8, "application/json");
+			await http.PutAsync(baseApiUrl + "/entries", requestContent);
+		}
+
 		public async Task DeleteEntryAsync(uint entryId)
 		{
 			await http.DeleteAsync($"{baseApiUrl}/entries/{entryId}");

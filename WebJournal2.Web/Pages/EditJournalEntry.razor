@@ -4,7 +4,7 @@
 
 @if(entry != null)
 {
-	<JournalEntryForm Entry="entry" OnCancel="nav.GoToIndexPage" />
+	<JournalEntryForm Entry="entry" OnCancel="nav.GoToIndexPage" OnValidSubmit="UpdateEntryAsync" />
 }
 else
 {
@@ -18,7 +18,14 @@ else
 
 	protected override async Task OnInitializedAsync()
 	{
-		entry = await entries.GetEntry((uint)Id);
+		entry = await entries.GetEntryAsync((uint)Id);
 		entry.Content = entry?.Content.Replace("<==>", "\n\n");
+	}
+
+	private async Task UpdateEntryAsync()
+	{
+		entry.Content = entry?.Content.Replace("\n\n", "<==>");
+		await entries.UpdateEntryAsync(entry);
+		nav.GoToIndexPage();
 	}
 }
