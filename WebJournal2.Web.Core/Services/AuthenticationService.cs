@@ -7,14 +7,15 @@ namespace WebJournal2.Web.Core.Services
 	public class AuthenticationService
 	{
 		private readonly ApiRequestService requestService;
-		private readonly AuthTokenHolder authToken;
+		private string token;
+		public string Token => token;
 		private bool isAuthenticated;
 		public bool IsAuthenticated => isAuthenticated;
 
-		public AuthenticationService(ApiRequestService requestService, AuthTokenHolder authToken)
+		public AuthenticationService(ApiRequestService requestService)
 		{
 			this.requestService = requestService;
-			this.authToken = authToken;
+			token = string.Empty;
 		}
 
 		public async Task<bool> Authenticate(string password)
@@ -35,9 +36,9 @@ namespace WebJournal2.Web.Core.Services
 			}
 			else
 			{
-				authToken.Token = receivedToken;
+				token = receivedToken;
 				isAuthenticated = true;
-				requestService.http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authToken.Token);
+				requestService.http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 				return true;
 			}
 		}
@@ -45,7 +46,7 @@ namespace WebJournal2.Web.Core.Services
 		public void Deauthenticate()
 		{
 			isAuthenticated = false;
-			authToken.Token = string.Empty;
+			token = string.Empty;
 		}
 	}
 }
