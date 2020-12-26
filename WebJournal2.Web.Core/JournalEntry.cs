@@ -26,7 +26,7 @@ namespace WebJournal2.Web.Core
 			Title = string.Empty;
 			Content = string.Empty;
 			SubmitDate = DateTime.Now;
-		 }
+		}
 
 		public JournalEntry(uint id, string title, string content, DateTime date)
 		{
@@ -38,7 +38,21 @@ namespace WebJournal2.Web.Core
 
 		public string[] GetParagraphs()
 		{
-			return Content.Split("<==>");
+			return Content.Split("<>");
+		}
+
+		public string ToFormattedForm()
+		{
+			string processedContent = Content;
+			processedContent = processedContent.Replace("\n\n", "<>");
+			return processedContent;
+		}
+
+		public string ToHumanReadableForm()
+		{
+			string processedContent = Content;
+			processedContent = processedContent.Replace("<>", "\n\n");
+			return processedContent;
 		}
 	}
 }

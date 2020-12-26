@@ -17,7 +17,6 @@
 	private async Task SubmitNewEntry()
 	{
 		await js.InvokeVoidAsync("console.log", "Valid submit!!");
-		entry.Content = entry.Content.Replace("\n\n", "<==>");
 		await entries.AddEntryAsync(entry);
 		nav.GoToIndexPage();
 	}

@@ -35,12 +35,14 @@ namespace WebJournal2.Web.Core.Services
 
 		public async Task AddEntryAsync(JournalEntry entry)
 		{
+			entry.Content = entry.ToFormattedForm();
 			await api.PostEntryAsync(entry);
 			await FetchEntries();
 		}
 
 		public async Task UpdateEntryAsync(JournalEntry entry)
 		{
+			entry.Content = entry.ToFormattedForm();
 			await api.PutEntryAsync(entry);
 			await FetchEntries();
 		}

@@ -19,12 +19,11 @@ else
 	protected override async Task OnInitializedAsync()
 	{
 		entry = await entries.GetEntryAsync((uint)Id);
-		entry.Content = entry?.Content.Replace("<==>", "\n\n");
+		entry.Content = entry?.ToHumanReadableForm();
 	}
 
 	private async Task UpdateEntryAsync()
 	{
-		entry.Content = entry?.Content.Replace("\n\n", "<==>");
 		await entries.UpdateEntryAsync(entry);
 		nav.GoToIndexPage();
 	}
