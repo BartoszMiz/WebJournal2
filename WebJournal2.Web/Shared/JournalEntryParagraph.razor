@@ -1,0 +1,22 @@
+<section>
+	<p class="entry-paragraph">
+		@formattedParagraph
+	</p>
+</section>
+
+@code
+{
+	[Parameter] public string Paragraph {get; set;}
+	private MarkupString formattedParagraph {get; set;}
+
+	protected override void OnParametersSet()
+	{
+		string sanitisedParagraph = Paragraph.Replace("<", "&lt;");
+		string html = Markdig.Markdown.ToHtml(sanitisedParagraph);
+		html = html.Remove(html.IndexOf("<p>"), 3);
+		html = html.Remove(html.IndexOf("</p>"), 4);
+		html = html.Remove(html.Length - 1);
+		html = html.Replace("\n", "<br>");
+		formattedParagraph = new MarkupString(html);
+	}
+}
