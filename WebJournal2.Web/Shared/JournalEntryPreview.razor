@@ -11,7 +11,11 @@
 			</h3>
 		</header>
 		<p class="entry-preview-paragraph">
-			@Entry.GetParagraphs()[0]
+			@{
+				string formattedContent = Entry.ToFormattedForm();
+				string paragraph = JournalEntry.GetParagraphs(formattedContent)[0];
+			}
+			@((MarkupString)(paragraph))
 			<NavLink href="@viewEntryUrl">
 				<span class="entry-preview-readmore">Read more...</span>
 			</NavLink>
