@@ -1,3 +1,5 @@
+@using System.Text.RegularExpressions
+
 <article>
 	<div class="entry-preview">
 		<header>
@@ -11,10 +13,17 @@
 			</h3>
 		</header>
 		<p class="entry-preview-paragraph">
-			@{;
+			@{
 				string paragraph = JournalEntry.GetParagraphs(Entry.Content)[0];
+				string sanitisedParagraph = paragraph.Replace("<", "&lt;");
+				string html = Markdig.Markdown.ToHtml(sanitisedParagraph);
+				html = html.Remove(html.IndexOf("<p>"), 3);
+				html = html.Remove(html.IndexOf("</p>"), 4);
+				html = html.Remove(html.Length - 1);
+				html = html.Replace("\n", "<br>");
+				html = Regex.Replace(html, "<a([^>]+)>", "<a$1 target=\"_blank\">");
 			}
-			@((MarkupString)(paragraph))
+			@((MarkupString)(html))
 			<NavLink href="@viewEntryUrl">
 				<span class="entry-preview-readmore">Read more...</span>
 			</NavLink>
