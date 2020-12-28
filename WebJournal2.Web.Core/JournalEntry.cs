@@ -36,25 +36,25 @@ namespace WebJournal2.Web.Core
 			SubmitDate = date;
 		}
 
-		public string ToFormattedForm()
-		{
-			string processedContent = Content;
-			processedContent = processedContent.Replace("\n\n", "<>");
-			processedContent = processedContent.Replace("\n", "<br>");
-			return processedContent;
-		}
+		// public string ToFormattedForm()
+		// {
+		// 	string processedContent = Content;
+		// 	processedContent = processedContent.Replace("\n\n", "<>");
+		// 	processedContent = processedContent.Replace("\n", "<br>");
+		// 	return processedContent;
+		// }
 
-		public string ToHumanReadableForm()
-		{
-			string processedContent = Content;
-			processedContent = processedContent.Replace("<>", "\n\n");
-			processedContent = processedContent.Replace("<br>", "\n");
-			return processedContent;
-		}
+		// public string ToHumanReadableForm()
+		// {
+		// 	string processedContent = Content;
+		// 	processedContent = processedContent.Replace("<>", "\n\n");
+		// 	processedContent = processedContent.Replace("<br>", "\n");
+		// 	return processedContent;
+		// }
 
 		public static string[] GetParagraphs(string content)
 		{
-			return content.Split("<>");
+			return content.Split("\n\n");
 		}
 	}
 }

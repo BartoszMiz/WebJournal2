@@ -1,7 +1,7 @@
 @page "/"
 @inject JournalEntryService entries
 <main>
-	@if(cachedEntries == null)
+	@if(cachedEntries == null || cachedEntries.Length == 0)
 	{
 		<h1 class="entry-preview-header">No entries found!</h1>
 	}

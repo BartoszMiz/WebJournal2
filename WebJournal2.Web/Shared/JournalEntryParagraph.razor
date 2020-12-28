@@ -1,3 +1,4 @@
+@using System.Text.RegularExpressions
 <section>
 	<p class="entry-paragraph">
 		@formattedParagraph
@@ -17,6 +18,7 @@
 		html = html.Remove(html.IndexOf("</p>"), 4);
 		html = html.Remove(html.Length - 1);
 		html = html.Replace("\n", "<br>");
+		html = Regex.Replace(html, "<a([^>]+)>", "<a$1 target=\"_blank\">");
 		formattedParagraph = new MarkupString(html);
 	}
 }

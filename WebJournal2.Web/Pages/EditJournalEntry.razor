@@ -19,7 +19,7 @@ else
 	protected override async Task OnInitializedAsync()
 	{
 		entry = await entries.GetEntryAsync((uint)Id);
-		entry.Content = entry?.ToHumanReadableForm();
+		// entry.Content = entry?.ToHumanReadableForm();
 	}
 
 	private async Task UpdateEntryAsync()
